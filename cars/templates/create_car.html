@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for car in cars %}
+    <img src="{{ car.photo.url }}" alt="{{ car.model }}">
+{% endfor %}
+<form action="{% url 'cars:create_car' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit">
+</form>
+
+{% endblock %}
