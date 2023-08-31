@@ -98,6 +98,14 @@ Home
     img{
         width: 200px;
     }
+    a{
+      font-size: 18px;
+      color:#333;
+      text-decoration: none;
+    }
+    a:hover{
+      color:#0096c7;
+    }
   </style>
 {% endblock %}
 {%block content %}
@@ -109,13 +117,15 @@ Home
     <div class="car-grid">
         {% if cars %}
             {% for car in cars %}
+            <a href="{% url 'cars:detail_car' car.pk %}">
             <div class="car-card">
                 {% if car.photo %}
                 <img src="{{ car.photo.url }}" alt="{{ car.model }}">
                 {% endif %}
-                <h2>{{ car.model }} - {{ car.brand }}</h2>
+                <h2> {{ car.model }}  - {{ car.brand }} </h2>
                 <p>{{ car.year }} - R$ {{ car.value }}</p>
                 </div>
+              </a>
             {% endfor %}
         {% else %}
                 <p class="no-results">Nenhum carro encontrado</p>
